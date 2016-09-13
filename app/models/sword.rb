@@ -1,15 +1,14 @@
-class Sword
+require_relative 'weapon'
+
+class Sword < Weapon
 
   STANDARD_APS = 1.4
-
-  attr_reader :min_dmg, :max_dmg, :element_boost, :str_modifer, :aps
+  DEFAULT_MIN_DMG = 0
+  DEFAULT_MAX_DMG = 0
+  DEFAULT_STR_MODIFIER = 0
 
   def initialize(args = {})
-    @min_dmg = args.fetch(:min_dmg, 0)
-    @max_dmg = args.fetch(:max_dmg, 0)
-    @element_boost = args.fetch(:element_boost, nil)
-    @str_modifer = args.fetch(:str_modifer, 0)
-    @aps = STANDARD_APS
+    super
   end
 
 end
