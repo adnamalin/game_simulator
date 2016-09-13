@@ -2,7 +2,7 @@ require_relative '../../app/models/punch'
 
 RSpec.describe Punch do
 
-  let(:punch) { Punch.new({min_dmg: 50, max_dmg: 65, element_boost: {fire: 0.10} ,str_modifer: 20} )}
+  let(:punch) { Punch.new()}
 
   describe 'attributes' do
     it 'has aps attack percentage as decimal' do
