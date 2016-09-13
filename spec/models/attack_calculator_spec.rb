@@ -55,4 +55,21 @@ RSpec.describe AttackCalculator do
     end
 
   end
+
+  describe '#damage_per_second' do
+
+    it 'returns the dmg per second for punch' do
+      expect(calculator.damage_per_second({min: 60, max:78},axe, punch)).to eq 82.8
+    end
+
+    it 'returns the dmg per second for smite' do
+      expect(calculator.damage_per_second({min: 59.4, max:77.22},axe, smite)).to eq 98.366
+    end
+
+    it 'returns the dmg per second for cleave' do
+      expect(calculator.damage_per_second({min: 72, max:93.6},axe, cleave)).to eq 89.424
+    end
+
+  end
+
 end
