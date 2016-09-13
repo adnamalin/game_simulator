@@ -1,5 +1,4 @@
 class Weapon
-
   attr_reader :min_dmg, :max_dmg, :element_boost, :str_modifer, :aps
 
   def initialize(args = {})
@@ -9,4 +8,4 @@ class Weapon
     @str_modifer = args.fetch(:str_modifer, self.class::DEFAULT_STR_MODIFIER)
     @aps = self.class::STANDARD_APS
   end
-end 
+end
