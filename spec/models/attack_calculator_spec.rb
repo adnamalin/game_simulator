@@ -13,36 +13,37 @@ RSpec.describe AttackCalculator do
   let(:cleave) { Cleave.new()}
   let(:smite) { Smite.new()}
 
-  describe '#min_attack_dmg' do
+  describe '#calculate_attack for min damage' do
 
     it 'returns the min attack dmg done punch' do
-      expect(calculator.min_attack_dmg(lena, axe, punch)).to eq 60
+      expect(calculator.calculate_attack(lena, axe, punch, {type: "min"})).to eq 60
     end
 
     it 'returns the min attack dmg done punch' do
-      expect(calculator.min_attack_dmg(lena, axe, smite)).to eq 59.4
+      expect(calculator.calculate_attack(lena, axe, smite, {type: "min"})).to eq 59.4
     end
-    
+
     it 'returns the min attack dmg done cleave' do
-      expect(calculator.min_attack_dmg(lena, axe, cleave)).to eq 72
+      expect(calculator.calculate_attack(lena, axe, cleave, {type: "min"})).to eq 72
     end
 
   end
 
-  describe '#max_attack_dmg' do
+  describe '#calculate_attack for max damage' do
 
     it 'returns the max attack dmg done punch' do
-      expect(calculator.max_attack_dmg(lena, axe, punch)).to eq 78
+      expect(calculator.calculate_attack(lena, axe, punch, {type: "max"})).to eq 78
     end
 
     it 'returns the max attack dmg done punch' do
-      expect(calculator.max_attack_dmg(lena, axe, smite)).to eq 77.22
+      expect(calculator.calculate_attack(lena, axe, smite, {type: "max"})).to eq 77.22
     end
 
     it 'returns the max attack dmg done cleave' do
-      expect(calculator.max_attack_dmg(lena, axe, cleave)).to eq 93.6
+      expect(calculator.calculate_attack(lena, axe, cleave, {type: "max"})).to eq 93.6
     end
   end
+
 
   describe '#boost_increase_checker' do
     it 'returns the boost increase as a integer to be added if the weapon and attack types match' do

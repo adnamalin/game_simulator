@@ -1,15 +1,8 @@
 class AttackCalculator
 
-  def min_attack_dmg(warrior, weapon, attack)
-    base_attack = attack.class::DMG_PERCENTAGE * weapon.min_dmg
-    strength_multiplier = (warrior.strength + weapon.str_modifer)/100.to_f
-    no_boost_total = (base_attack * strength_multiplier) + base_attack
-    boost_increase = boost_increase_checker(no_boost_total, weapon, attack)
-    final_total = no_boost_total + boost_increase
-  end
-
-  def max_attack_dmg(warrior, weapon, attack)
-    base_attack = attack.class::DMG_PERCENTAGE * weapon.max_dmg
+  def calculate_attack(warrior, weapon, attack, opts = {})
+    original_dmg = opts[:type] == "max" ? weapon.max_dmg : weapon.min_dmg
+    base_attack = attack.class::DMG_PERCENTAGE * original_dmg
     strength_multiplier = (warrior.strength + weapon.str_modifer)/100.to_f
     no_boost_total = (base_attack * strength_multiplier) + base_attack
     boost_increase = boost_increase_checker(no_boost_total, weapon, attack)
