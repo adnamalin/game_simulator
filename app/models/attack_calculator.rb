@@ -8,6 +8,14 @@ class AttackCalculator
     final_total = no_boost_total + boost_increase
   end
 
+  def max_attack_dmg(warrior, weapon, attack)
+    base_attack = attack.class::DMG_PERCENTAGE * weapon.max_dmg
+    strength_multiplier = (warrior.strength + weapon.str_modifer)/100.to_f
+    no_boost_total = (base_attack * strength_multiplier) + base_attack
+    boost_increase = boost_increase_checker(no_boost_total, weapon, attack)
+    final_total = no_boost_total + boost_increase
+  end
+
   def boost_increase_checker(total_damage,weapon, attack)
     weapon.element_boost[:type] == attack.element_type ? (total_damage * weapon.element_boost[:percent]) : 0
   end
