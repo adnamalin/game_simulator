@@ -7,6 +7,7 @@ class AttackCalculator
     no_boost_total = (base_attack * strength_multiplier) + base_attack
     boost_increase = boost_increase_checker(no_boost_total, weapon, attack)
     final_total = no_boost_total + boost_increase
+    final_total
   end
 
   def boost_increase_checker(total_damage,weapon, attack)
