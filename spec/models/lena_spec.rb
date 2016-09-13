@@ -17,5 +17,9 @@ RSpec.describe Lena do
       expect(lena.strength).to eq 100
     end
 
+    it 'has known attacks' do
+      expect(lena.attacks.all? {|a| a.class.superclass == Attack}).to eq true
+    end
+
   end
 end
