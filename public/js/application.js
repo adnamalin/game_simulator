@@ -7,7 +7,7 @@ $(document).ready(function() {
     console.log(data);
     $.post( "/calculate", data )
       .done(function( response ) {
-        $('.title').text("Find Out Lena's Attack Results!")
+        $('.title').text("CopyCat Gaming")
         $('#main-form').trigger("reset");
         $("#results").html(response).slideDown(2000);
       });
