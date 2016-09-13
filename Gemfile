@@ -15,7 +15,6 @@ gem 'pry'
 gem 'bcrypt'
 
 gem 'shotgun'
-gem 'faker', github: 'stympy/faker'
 
 
 group :test do

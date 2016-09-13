@@ -1,7 +1,15 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $("#main-form").on("submit", function(e){
+    e.preventDefault();
+    $('.title').text('Calculating...')
+    $form = $(this)
+    data = $(this).serialize();
+    console.log(data);
+    $.post( "/calculate", data )
+      .done(function( response ) {
+        $('.title').text("Find Out Lena's Attack Results!")
+        $('#main-form').trigger("reset");
+        $("#results").html(response).slideDown(2000);
+      });
+    });
 });

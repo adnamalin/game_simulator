@@ -1,0 +1,24 @@
+<div class="panel panel-danger">
+  <div class="panel-heading"><%= warrior.class.name %> | Level: <%= warrior.level %> <br/> <%= weapon.class.name %> | minimum: <%= weapon.min_dmg %> maximum: <%= weapon.max_dmg %> STR: <%= weapon.str_modifer %> Elementh Boost: <%= weapon.element_boost[:type] %> at <%= weapon.element_boost[:percent]*100 %>% </div>
+    <div class="panel-body">
+      <table class="table">
+        <tr>
+          <th>Attack</th>
+          <th>Mimimun</th>
+          <th>Maximum</th>
+          <th>DPS</th>
+        </tr>
+        <% results.each do |entire_attack| %>
+          <% entire_attack.each do |attack, details| %>
+            <tr>
+              <td><%= attack %></td>
+              <td><%= details[:minimum] %></td>
+              <td><%= details[:maximum] %></td>
+              <td><%= details[:DPS] %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

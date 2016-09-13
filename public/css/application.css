@@ -1,0 +1,9 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.weapon-details {
+  display: flex;
+  justify-content: space-between;
+}
