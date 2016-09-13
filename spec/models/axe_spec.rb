@@ -2,7 +2,7 @@ require_relative '../../app/models/axe'
 
 RSpec.describe Axe do
 
-  let(:axe) { Axe.new({min_dmg: 50, max_dmg: 65, element_boost: {fire: 0.10} ,str_modifer: 20} )}
+  let(:axe) { Axe.new({min_dmg: 50, max_dmg: 65, element_boost: {type: :fire, percent: 0.10} ,str_modifer: 20} )}
 
   describe 'attributes' do
     it 'has min damage' do
@@ -18,7 +18,7 @@ RSpec.describe Axe do
     end
 
     it 'has elemental boost' do
-      expect(axe.element_boost).to eq({fire: 0.10})
+      expect(axe.element_boost).to eq({type: :fire, percent: 0.10})
     end
 
     it 'has strength modifer' do
