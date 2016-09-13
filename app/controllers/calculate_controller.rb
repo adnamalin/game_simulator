@@ -1,8 +1,10 @@
+get '/' do
+  redirect '/calculate/new'
+end
+
 get '/calculate/new' do
   erb :'/calculate/new'
 end
-
-# {"level"=>"10", "weapon"=>"Axe", "min_damage"=>"50", "max_damage"=>"65", "str_modifier"=>"20", "element_type"=>"fire", "element_boost_percent"=>"10"}
 
 post '/calculate' do
   @warrior = Lena.new(level: params[:level].to_i)
