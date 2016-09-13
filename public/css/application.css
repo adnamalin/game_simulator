@@ -7,3 +7,12 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+.abel {
+  font-family: 'Abel', sans-serif;
+}
+
+.title {
+  text-align: center;
+  letter-spacing: 2px;
+}
