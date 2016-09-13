@@ -2,7 +2,7 @@ require_relative '../../app/models/mace'
 
 RSpec.describe Mace do
 
-  let(:mace) { Mace.new({}) }
+  let(:mace) { Mace.new({min_dmg: 50, max_dmg: 65, str_modifer: 20, element_boost: {fire: 0.10}}) }
 
   describe 'attributes' do
     it 'has min damage' do
@@ -18,7 +18,7 @@ RSpec.describe Mace do
     end
 
     it 'has elemental boost' do
-      expect(mace.element_boost).to eq {fire: 0.1}
+      expect(mace.element_boost).to eq {fire: 0.10}
     end
 
     it 'has strength modifer' do
