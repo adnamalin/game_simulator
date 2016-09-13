@@ -10,11 +10,11 @@ RSpec.describe Lena do
     end
 
     it 'has vitality as integer' do
-      expect(lena.vitality).to eq 50
+      expect(lena.vitality).to eq 0
     end
 
     it 'has strength as integer' do
-      expect(lena.strength).to eq 100
+      expect(lena.strength).to eq 0
     end
 
     it 'has known attacks' do
