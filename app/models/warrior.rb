@@ -2,6 +2,8 @@ require_relative 'attack_calculator'
 
 class Warrior
 
+  include AttackCalculator
+  
   attr_reader :level, :strength, :vitality, :attacks
 
   def initialize(args = {})
@@ -9,6 +11,9 @@ class Warrior
     @strength = args.fetch(:strength, 0)
     @vitality = args.fetch(:vitality,0)
     @attacks = self.class::KNOWN_ATTACKS
+  end
+
+  def attack_results
   end
 
   # def total_strength(level)
