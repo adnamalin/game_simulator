@@ -17,8 +17,5 @@ RSpec.describe Punch do
       expect(punch.element_type).to eq :physical
     end
 
-
   end
 end
-
-# Attacks at 100% of weapon’s APS for 100% of the weapon’s DMG as Physical.
