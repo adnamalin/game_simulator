@@ -18,7 +18,7 @@ class Warrior
       min = @calculator.calculate_attack(self, weapon, attack, {type: "min"})
       max = @calculator.calculate_attack(self, weapon, attack, {type: "max"})
       dps = @calculator.damage_per_second({min: min, max: max}, weapon, attack)
-      results << {:"#{attack.class.name}" => {minimum: min, maximum: max, DPS: dps}}
+      results << {attack: attack.class.name ,minimum: min, maximum: max, DPS: dps}
     end
     results
   end

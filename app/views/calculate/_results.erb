@@ -9,14 +9,12 @@
           <th>DPS</th>
         </tr>
         <% results.each do |entire_attack| %>
-          <% entire_attack.each do |attack, details| %>
             <tr>
-              <td><%= attack %></td>
-              <td><%= details[:minimum] %></td>
-              <td><%= details[:maximum] %></td>
-              <td><%= details[:DPS] %></td>
+              <td><%= entire_attack[:attack] %></td>
+              <td><%= entire_attack[:minimum] %></td>
+              <td><%= entire_attack[:maximum] %></td>
+              <td><%= entire_attack[:DPS] %></td>
             </tr>
-          <% end %>
         <% end %>
       </table>
     </div>
