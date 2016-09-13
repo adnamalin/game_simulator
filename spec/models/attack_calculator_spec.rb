@@ -28,6 +28,21 @@ RSpec.describe AttackCalculator do
 
   end
 
+  describe '#max_attack_dmg' do
+    it 'returns the max attack dmg done cleave' do
+      expect(calculator.max_attack_dmg(lena, axe, cleave)).to eq 78
+    end
+
+    it 'returns the max attack dmg done punch' do
+      expect(calculator.max_attack_dmg(lena, axe, punch)).to eq 77.22
+    end
+
+    it 'returns the max attack dmg done punch' do
+      expect(calculator.max_attack_dmg(lena, axe, smite)).to eq 93.6
+    end
+
+  end
+
   describe '#boost_increase_checker' do
     it 'returns the boost increase as a integer to be added if the weapon and attack types match' do
       expect(calculator.boost_increase_checker(54, axe, smite)).to eq 5.4
