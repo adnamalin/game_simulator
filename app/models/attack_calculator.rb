@@ -2,22 +2,7 @@ class AttackCalculator
 
   class << self
 
-    def all_attack_results(warrior, weapon)
-      results =[]
-      warrior.attacks.each do |attack|
-        results << collect_single_result(warrior, weapon, attack)
-      end
-      results
-    end
-
     # private
-
-    def collect_single_result(warrior, weapon, attack)
-      min = calculate_min_attack(warrior, weapon, attack)
-      max = calculate_max_attack(warrior, weapon, attack)
-      dps = damage_per_second({min: min, max: max}, weapon, attack)
-      {attack: attack.class.name ,minimum: min, maximum: max, DPS: dps}
-    end
 
     def calculate_max_attack(warrior, weapon, attack)
       base_attack = attack.class::DMG_PERCENTAGE * weapon.max_dmg

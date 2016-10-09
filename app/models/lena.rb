@@ -1,7 +1,7 @@
 require_relative 'warrior'
 require_relative 'punch'
 require_relative 'smite'
-require_relative 'Cleave'
+require_relative 'cleave'
 
 class Lena < Warrior
 

@@ -13,14 +13,6 @@ RSpec.describe AttackCalculator do
   let(:cleave) { Cleave.new()}
   let(:smite) { Smite.new()}
 
-  describe '#all_attack_results' do
-
-    it 'returns array of hash of attack results fr all weapons' do
-      expect(calculator.all_attack_results(lena, axe)).to eq [{attack: "Punch", minimum: 60, maximum: 78, DPS: 82.8}, {attack: "Smite", minimum: 59.4, maximum: 77.22, DPS: 98.366}, {attack: "Cleave", minimum: 72, maximum: 93.6, DPS: 89.424}]
-    end
-
-  end
-
   describe '#calculate_attack for min damage' do
 
     it 'returns the min attack dmg done punch' do
