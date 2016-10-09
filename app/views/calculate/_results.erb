@@ -1,5 +1,5 @@
 <div class="panel panel-danger">
-  <div class="panel-heading"><%= warrior.class.name %> | Level: <%= warrior.level %> <br/> <%= weapon.class.name %> | minimum: <%= weapon.min_dmg %> maximum: <%= weapon.max_dmg %> STR: <%= weapon.str_modifer %> Elementh Boost: <%= weapon.element_boost[:type] %> at <%= weapon.element_boost[:percent]*100 %>% </div>
+  <div class="panel-heading"><%= warrior.class.name %> | Level: <%= warrior.level %> <br/> <%= weapon.class.name %> | minimum: <%= weapon.min_dmg %> maximum: <%= weapon.max_dmg %> STR: <%= weapon.str_modifer %> Elementh Boost: <%= weapon.element_type %> at <%= weapon.element_boost_amt*100 %>% </div>
     <div class="panel-body">
       <table class="table">
         <tr>

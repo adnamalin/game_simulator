@@ -3,9 +3,9 @@ require_relative 'punch'
 require_relative 'smite'
 require_relative 'cleave'
 
-class Lena < Warrior
+class Conan < Warrior
 
-  STRENGTH_INCREASE = 10
+  STRENGTH_INCREASE = 20
   VITALITY_INCREASE = 5
   KNOWN_ATTACKS = [Punch.new, Smite.new, Cleave.new]
 

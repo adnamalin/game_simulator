@@ -1,23 +1,4 @@
-class AttackCalculator
-
-  class << self
-
-    def all_attack_results(warrior, weapon)
-      results =[]
-      warrior.attacks.each do |attack|
-        results << collect_single_result(warrior, weapon, attack)
-      end
-      results
-    end
-
-    # private
-
-    def collect_single_result(warrior, weapon, attack)
-      min = calculate_min_attack(warrior, weapon, attack)
-      max = calculate_max_attack(warrior, weapon, attack)
-      dps = damage_per_second({min: min, max: max}, weapon, attack)
-      {attack: attack.class.name ,minimum: min, maximum: max, DPS: dps}
-    end
+module AttackCalculator
 
     def calculate_max_attack(warrior, weapon, attack)
       base_attack = attack.class::DMG_PERCENTAGE * weapon.max_dmg
@@ -35,11 +16,11 @@ class AttackCalculator
     end
 
     def no_boost_total_calculator(warrior, weapon, base_attack)
-      strength_multiplier = strength_multiplier_calculation(warrior, weapon)
+      strength_multiplier = strength_multiplier_calculator(warrior, weapon)
       (base_attack * strength_multiplier) + base_attack
     end
 
-    def strength_multiplier_calculation(warrior, weapon)
+    def strength_multiplier_calculator(warrior, weapon)
       (warrior.strength + weapon.str_modifer)/100.to_f
     end
 
@@ -65,5 +46,4 @@ class AttackCalculator
       (base_aps * attack.class::APS_PERCENTAGE).round(3)
     end
 
-  end
 end
