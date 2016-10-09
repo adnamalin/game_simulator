@@ -1,6 +1,7 @@
 require_relative 'attack_calculator'
 
 class AttackReportGenerator
+  include AttackCalculator
 
   class << self
 
@@ -13,9 +14,9 @@ class AttackReportGenerator
     end
 
     def collect_single_result(warrior, weapon, attack)
-      min = AttackCalculator.calculate_min_attack(warrior, weapon, attack)
-      max = AttackCalculator.calculate_max_attack(warrior, weapon, attack)
-      dps = AttackCalculator.damage_per_second({min: min, max: max}, weapon, attack)
+      min = calculate_min_attack(warrior, weapon, attack)
+      max = calculate_max_attack(warrior, weapon, attack)
+      dps = damage_per_second({min: min, max: max}, weapon, attack)
       {attack: attack.class.name ,minimum: min, maximum: max, DPS: dps}
     end
 
