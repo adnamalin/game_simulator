@@ -20,11 +20,11 @@ class AttackCalculator
     end
 
     def no_boost_total_calculator(warrior, weapon, base_attack)
-      strength_multiplier = strength_multiplier_calculation(warrior, weapon)
+      strength_multiplier = strength_multiplier_calculator(warrior, weapon)
       (base_attack * strength_multiplier) + base_attack
     end
 
-    def strength_multiplier_calculation(warrior, weapon)
+    def strength_multiplier_calculator(warrior, weapon)
       (warrior.strength + weapon.str_modifer)/100.to_f
     end
 
