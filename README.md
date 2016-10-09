@@ -14,13 +14,15 @@ For example in the test case provided:
 > 50-65 DMG, 20 STR, 10% Fire Damage
 
 The form would look like this:
+
 ![form](http://i.imgur.com/UyXcn2x.png)
 
 And you would see these results:
+
 ![results](http://i.imgur.com/N9o2Qj2.png)
 
 ### Design
-My main goal was to make it flexible enough that adding a new warrior, weapon, or attack could be easily handled. I seperated attacks, warriors, and weapons into parent classes. This way it is easy to add a new child class if Copycat Gaming wanted a new weapon, warrior, etc you just need to create a child class with the stats provided as constants. In my controller I tried to methods that weapon_creator that would be helpful and easy to toggle between the different child classes the user request in the form drop-downs. 
+My main goal was to make it flexible enough that adding a new warrior, weapon, or attack could be easily handled. I seperated attacks, warriors, and weapons into parent classes. This way it is easy to add a new child class if Copycat Gaming wanted a new weapon, warrior, etc you just need to create a child class with the stats provided as constants. In my controller I tried to methods that weapon_creator that would be helpful and easy to toggle between the different child classes the user request in the form drop-downs.
 
 All calculations are done using the AttackCalculator. If calculation rules change then you can easily modify the methods in this class.
 

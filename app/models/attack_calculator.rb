@@ -1,22 +1,69 @@
 class AttackCalculator
 
-  def calculate_attack(warrior, weapon, attack, opts = {})
-    original_dmg = opts[:type].downcase == "max" ? weapon.max_dmg : weapon.min_dmg
-    base_attack = attack.class::DMG_PERCENTAGE * original_dmg
-    strength_multiplier = (warrior.strength + weapon.str_modifer)/100.to_f
-    no_boost_total = (base_attack * strength_multiplier) + base_attack
-    boost_increase = boost_increase_checker(no_boost_total, weapon, attack)
-    final_total = no_boost_total + boost_increase
-  end
+  class << self
 
-  def boost_increase_checker(total_damage,weapon, attack)
-    weapon.element_boost[:type] == attack.element_type ? (total_damage * weapon.element_boost[:percent]) : 0
-  end
+    def all_attack_results(warrior, weapon)
+      results =[]
+      warrior.attacks.each do |attack|
+        results << collect_single_result(warrior, weapon, attack)
+      end
+      results
+    end
 
-  def damage_per_second(attack_dmg ={}, weapon, attack)
-    average_atk = (attack_dmg[:min] + attack_dmg[:max])/2
-    base_aps = average_atk * weapon.class::STANDARD_APS
-    (base_aps * attack.class::APS_PERCENTAGE).round(3)
-  end
+    # private
 
+    def collect_single_result(warrior, weapon, attack)
+      min = calculate_min_attack(warrior, weapon, attack)
+      max = calculate_max_attack(warrior, weapon, attack)
+      dps = damage_per_second({min: min, max: max}, weapon, attack)
+      {attack: attack.class.name ,minimum: min, maximum: max, DPS: dps}
+    end
+
+    def calculate_max_attack(warrior, weapon, attack)
+      base_attack = attack.class::DMG_PERCENTAGE * weapon.max_dmg
+      calculate_attack(warrior, weapon,attack, base_attack)
+    end
+
+    def calculate_min_attack(warrior, weapon, attack)
+      base_attack = attack.class::DMG_PERCENTAGE * weapon.min_dmg
+      calculate_attack(warrior, weapon, attack, base_attack)
+    end
+
+    def calculate_attack(warrior, weapon, attack, base_attack)
+      no_boost_total = no_boost_total_calculator(warrior, weapon, base_attack)
+      final_total = boost_increase_checker(no_boost_total, weapon, attack)
+    end
+
+    def no_boost_total_calculator(warrior, weapon, base_attack)
+      strength_multiplier = strength_multiplier_calculation(warrior, weapon)
+      (base_attack * strength_multiplier) + base_attack
+    end
+
+    def strength_multiplier_calculation(warrior, weapon)
+      (warrior.strength + weapon.str_modifer)/100.to_f
+    end
+
+    def boost_increase_checker(no_boost_total, weapon, attack)
+      if boost_increase_qualified?(weapon, attack)
+        boost_increase_adder(no_boost_total, weapon)
+      else
+        no_boost_total
+      end
+    end
+
+    def boost_increase_qualified?(weapon, attack)
+      weapon.element_type == attack.element_type
+    end
+
+    def boost_increase_adder(no_boost_total, weapon)
+      no_boost_total + (no_boost_total * weapon.element_boost_amt)
+    end
+
+    def damage_per_second(attack_dmg ={}, weapon, attack)
+      average_atk = (attack_dmg[:min] + attack_dmg[:max])/2
+      base_aps = average_atk * weapon.class::STANDARD_APS
+      (base_aps * attack.class::APS_PERCENTAGE).round(3)
+    end
+
+  end
 end
