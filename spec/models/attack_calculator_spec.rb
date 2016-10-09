@@ -6,7 +6,7 @@ require_relative '../../app/models/smite'
 
 RSpec.describe AttackCalculator do
 
-  let(:calculator) { AttackCalculator }
+  let(:calculator) { Class.new { extend AttackCalculator } }
   let(:lena) { Lena.new({level: 10}) }
   let(:axe) { Axe.new({min_dmg: 50, max_dmg: 65, element_boost_amt: 0.10, element_type: :fire, str_modifer: 20} )}
   let(:punch) { Punch.new()}
