@@ -1,4 +1,4 @@
-class AttackCalculator
+module AttackCalculator
 
   class << self
 
