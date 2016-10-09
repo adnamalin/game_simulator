@@ -1,9 +1,10 @@
 require_relative 'attack_calculator'
 
 class AttackReportGenerator
-  include AttackCalculator
 
   class << self
+
+    include AttackCalculator
 
     def all_attack_results(warrior, weapon)
       results =[]

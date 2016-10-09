@@ -1,9 +1,5 @@
 module AttackCalculator
 
-  class << self
-
-    # private
-
     def calculate_max_attack(warrior, weapon, attack)
       base_attack = attack.class::DMG_PERCENTAGE * weapon.max_dmg
       calculate_attack(warrior, weapon,attack, base_attack)
@@ -50,5 +46,4 @@ module AttackCalculator
       (base_aps * attack.class::APS_PERCENTAGE).round(3)
     end
 
-  end
 end
