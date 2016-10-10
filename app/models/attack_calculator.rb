@@ -1,12 +1,12 @@
 module AttackCalculator
 
     def calculate_max_attack(warrior, weapon, attack)
-      base_attack = attack.class::DMG_PERCENTAGE * weapon.max_dmg
+      base_attack = attack_dmg_percentage(attack) * weapon.max_dmg
       calculate_attack(warrior, weapon,attack, base_attack)
     end
 
     def calculate_min_attack(warrior, weapon, attack)
-      base_attack = attack.class::DMG_PERCENTAGE * weapon.min_dmg
+      base_attack = attack_dmg_percentage(attack) * weapon.min_dmg
       calculate_attack(warrior, weapon, attack, base_attack)
     end
 
@@ -42,8 +42,12 @@ module AttackCalculator
 
     def damage_per_second(attack_dmg ={}, weapon, attack)
       average_atk = (attack_dmg[:min] + attack_dmg[:max])/2
-      base_aps = average_atk * weapon.class::STANDARD_APS
-      (base_aps * attack.class::APS_PERCENTAGE).round(3)
+      base_aps = average_atk * weapon.aps
+      (base_aps * attack.aps_percentage).round(3)
+    end
+
+    def attack_dmg_percentage(attack)
+      attack.dmg_percentage
     end
 
 end
