@@ -1,5 +1,3 @@
-require_relative 'attack_calculator'
-
 class Warrior
 
   attr_reader :level, :strength, :vitality, :attacks

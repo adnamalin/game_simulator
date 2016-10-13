@@ -4,8 +4,6 @@ class AttackReportGenerator
 
   class << self
 
-    include AttackCalculator
-
     def all_attack_results(warrior, weapon)
       results =[]
       warrior.attacks.each do |attack|
@@ -14,11 +12,10 @@ class AttackReportGenerator
       results
     end
 
+    private
+
     def collect_single_result(warrior, weapon, attack)
-      min = calculate_min_attack(warrior, weapon, attack)
-      max = calculate_max_attack(warrior, weapon, attack)
-      dps = damage_per_second({min: min, max: max}, weapon, attack)
-      {attack: attack.class.name ,minimum: min, maximum: max, DPS: dps}
+      AttackCalculator.calculate_all(warrior, weapon, attack)
     end
 
   end
