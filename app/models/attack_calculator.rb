@@ -1,7 +1,10 @@
 class AttackCalculator
     class << self
 
-      def calculate_all(warrior, weapon, attack)
+      def calculate_all(args={})
+        warrior = args[:warrior]
+        weapon = args[:weapon]
+        attack = args[:attack]
         min = calculate_min_attack(warrior, weapon, attack)
         max = calculate_max_attack(warrior, weapon, attack)
         dps = damage_per_second(min, max, weapon, attack)

@@ -17,7 +17,7 @@ RSpec.describe AttackCalculator do
   describe '#calculate_all' do
 
     it 'returns hash of attack name, min attack, max attack, and dps values' do
-      expect(calculator.calculate_all(lena, axe, punch)).to eq({attack: "Punch", minimum: 60, maximum: 78, DPS: 82.8})
+      expect(calculator.calculate_all({warrior: lena, weapon: axe, attack: punch})).to eq({attack: "Punch", minimum: 60, maximum: 78, DPS: 82.8})
     end
 
   end
